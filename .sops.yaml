@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: .*  # Działa dla wszystkich plików
+    age: age1qyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqs3290gq  # Publiczny klucz Age (bezpieczna alternatywa)
