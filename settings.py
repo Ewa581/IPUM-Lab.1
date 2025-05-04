@@ -1,23 +1,13 @@
-from pydantic import ValidationError, validator
 from pydantic_settings import BaseSettings
-
+from pydantic import field_validator, ValidationError  # Zmienione importy
 
 class Settings(BaseSettings):
     ENVIRONMENT: str
     APP_NAME: str
 
-    @validator("ENVIRONMENT")
+    @field_validator("ENVIRONMENT")  # Nowa składnia
     def validate_environment(cls, value):
-        allowed_environments = {"dev", "test", "prod"}
-        if value not in allowed_environments:
-            raise ValueError(f"Environment must be one of: {allowed_environments}")
+        allowed = {"dev", "test", "prod"}
+        if value not in allowed:
+            raise ValueError(f"Environment must be one of: {allowed}")
         return value
-
-
-# Przykład użycia
-if __name__ == "__main__":
-    try:
-        settings = Settings(ENVIRONMENT="dev", APP_NAME="Test App")
-        print(settings)
-    except ValidationError as e:
-        print("Error:", e)
