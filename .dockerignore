@@ -1,0 +1,4 @@
+.git
+.venv
+__pycache__
+*.joblib  # Jeśli model jest duży
